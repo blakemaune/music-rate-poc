@@ -1,0 +1,20 @@
+<HTML>
+	<head>
+		<title>RcrdKpr</title>
+	</head>
+	<BODY>
+		<h1>WELCOME TO RCRDKPR</h1>
+		<h2><a href="{% url 'search_form' %}" class="top-menu">SEARCH</a>
+		{% for rating in ratings %}
+		<div>
+			<H2>{{ rating }}</H2>
+			<a href="{% url 'rating_detail' ratingID=rating.id %}" class="top-menu">
+				<img src={{ rating.album.art_url }} height="200", width="200">
+			</a>
+			<H4>{{ rating.user }}</H4>
+			<p> {{ rating.comment }} </p>
+			<hr>
+		</div>
+		{% endfor %}
+	</BODY>
+</HTML>

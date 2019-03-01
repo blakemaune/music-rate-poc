@@ -1,0 +1,15 @@
+<HTML>
+	<head>
+		<title>RcrdKpr</title>
+	</head>
+	<BODY>
+		<h1>WELCOME TO RCRDKPR</h1>
+		<h2>Here's your search results, you schmuck.</h2>
+		{% for result in results %}
+			<h1>{{ result.name }}</h1>
+			<a href="{% url 'album_detail' uri=result.id %}?name={{ result.name }}&artist={{ result.artist }}&img={{ result.img }}">
+			    <img height="250px" width="250px" src = "{{ result.img }}"/>
+			</a>
+		{% endfor %}
+	</BODY>
+</HTML>

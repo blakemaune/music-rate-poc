@@ -1,0 +1,19 @@
+<HTML>
+	<BODY>
+		<h1>Rating Detail</h1>
+		<h4>Last updated: {{ rating.updated }}</h4>
+		<h2>{{ rating.user }}</h2>
+		<h2>{{ rating.album.name }}</h2>
+		<img height="400px" width="400px" src="{{ rating.album.art_url }}"/>
+		<h2>{{ rating.value }}</h2>
+		<h2>{{ rating.user }}</h2>
+		<h2>{{ rating.comment }}</h2>
+		{% if rating.user == request.user %}
+    		<a href="{% url 'rating_edit' ratingID=rating.id %}">
+				EDIT
+			</a>
+    	{% endif %}
+
+		<hl/>
+	</BODY>
+</HTML>

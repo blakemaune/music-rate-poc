@@ -1,0 +1,30 @@
+<HTML>
+	<head>
+		<title>RcrdKpr</title>
+	</head>
+	<BODY>
+		<h1>WELCOME TO RCRDKPR</h1>
+		<h2>Here's your search results, you schmuck.</h2>
+			<script type="text/javascript">
+			var jsonObject = JSON.parse("{{ data | escapejs }}");
+			console.log(jsonObject);
+			console.log("Found " + jsonObject.length + " item(s)");
+			for(var i = 0; i <= jsonObject.length; i++){
+				var current = jsonObject[i];
+				var artist = current['artists'][0]['name'];
+				var albumName = current['name'];
+				var image = current['images'][0]['url'];
+				var id = current['id'];
+				var type = current['album_type'].charAt(0).toUpperCase()+current['album_type'].slice(1);
+
+				document.write("<form method='POST' class='post-form'>")
+				document.write("{% csrf_token %}")
+				document.write("<button type='Submit'>"+
+					"<input type='hidden' name='id' value='"+id+"'>"+
+					"<img src='"+image+"'/>"+
+					"</button>"
+				);
+			}
+			</script>
+	</BODY>
+</HTML>

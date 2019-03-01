@@ -1,0 +1,24 @@
+<HTML>
+	<BODY>
+		<h1>ALBUM DETAIL</h1>
+		<h1>{{ album.name }}</h1>
+		<h1>{{ album.artist }}</h1>
+		<img src="{{ album.art_url }}"/>
+		<a href="{% url 'rating_edit' uri=album.spotify_id %}">
+			    Rate this album!
+		</a>
+		
+		{% for rating in ratings %}
+		<div>
+			<H2>{{ rating }}</H2>
+			<a href="{% url 'rating_detail' ratingID=rating.id %}" class="top-menu">
+				<img src={{ rating.album.art_url }} height="200", width="200">
+			</a>
+			<H4>{{ rating.user }}</H4>
+			<p> {{ rating.comment }} </p>
+			<hr>
+		</div>
+		{% endfor %}
+
+	</BODY>
+</HTML>
